@@ -1,0 +1,8 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+/* page为小程序默认的最外层组件，这里要将它的宽、高设置为100%
+  page类似于view组件，只是一个容器组件，没有特殊功能 */
+page {
+  width: 100%;
+  height: 100%;
+}

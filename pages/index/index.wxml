@@ -1,0 +1,44 @@
+<view class="container">
+  <!-- 用户拒绝授权地理位置信息时，显示提示文字引导用户重新授权 -->
+  <block wx:if="{{authFailed}}">
+    <text>地理位置信息将用于绘制运动轨迹</text>
+    <text class="margin-tb">请同意授权，否则小程序无法使用</text>
+    <button class="cu-btn bg-orange lg" bindtap="openSetting">地理位置授权</button>
+  </block>
+  <!-- 授权成功时，显示地图 -->
+  <block wx:else>
+    <map id="my-map" scale="{{17}}" show-location show-scale latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" bindregionchange="onRegionChange">
+      <!-- 跑步开始前的倒计时数字 -->
+      <cover-view wx:if="{{status === 'starting'}}" class="counting-num">{{countingNum}}</cover-view>
+      <!-- 在地图下方显示控制按钮 -->
+      <cover-view class="control-btn flex flex-direction justify-between">
+        <!-- 未开始跑步时，显示开始跑步和跑步记录按钮 -->
+        <block wx:if="{{status === 'stop'}}">
+          <!-- 在原生组件map上面显示组件需要使用cover-view -->
+          <cover-view class="cu-btn round lg bg-green shadow" bindtap="onClickRun">
+            <!-- 将文字再封装一层cover-view，否则在Android手机上面无法垂直居中文字 -->
+            <cover-view>开始跑步</cover-view>
+          </cover-view>
+          <cover-view class="cu-btn round lg bg-grey shadow margin-top" bindtap="onClickRecord">
+            <cover-view>跑步记录</cover-view>
+          </cover-view>
+        </block>
+        <!-- 正在跑步时，显示暂停跑步按钮 -->
+        <block wx:elif="{{status === 'running'}}">
+          <cover-view class="cu-btn round lg bg-yellow shadow" bindtap="onClickPause">
+            <cover-view>暂停跑步</cover-view>
+          </cover-view>
+        </block>
+        <!-- 暂停跑步时，显示继续跑步和结束跑步按钮 -->
+        <block wx:elif="{{status === 'pause'}}">
+          <cover-view class="cu-btn round lg bg-green shadow" bindtap="onClickRun">
+            <cover-view>继续跑步</cover-view>
+          </cover-view>
+          <cover-view class="cu-btn round lg bg-red shadow margin-top" bindtap="onClickStop">
+            <cover-view>结束跑步</cover-view>
+          </cover-view>
+        </block>
+      </cover-view>
+    </map>
+  </block>
+</view>

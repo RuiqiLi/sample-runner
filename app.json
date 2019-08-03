@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/record/list",
+    "pages/record/record"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "地理位置信息将用于绘制运动轨迹"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "跑步达人",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#my-map {
+  width: 100%;
+  height: 100%;
+}
+.counting-num {
+  position: fixed;
+  top: 300rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 72pt;
+}
+.control-btn {
+  width: 400rpx;
+  position: fixed;
+  bottom: 200rpx;
+  left: 175rpx;
+}

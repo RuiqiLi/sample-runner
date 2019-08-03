@@ -1,0 +1,9 @@
+<view class="cu-list menu">
+  <block wx:for="{{pageData}}">
+    <navigator class="cu-item arrow" url="/pages/record/record?recordId={{item._id}}">
+      <view class="content">
+        <text class="text-black">{{item.createTimeStr}}</text>
+      </view>
+    </navigator>
+  </block>
+</view>
