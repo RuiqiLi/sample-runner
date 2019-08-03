@@ -1,3 +1,5 @@
+const util = require('../..//utils/util.js')
+
 Page({
   data: {
     pageData: [], // 跑步记录列表
@@ -21,8 +23,7 @@ Page({
           .limit(PAGE_COUNT) // 获取新的20条数据
           .get().then(res2 => { // 为了防止命名冲突，返回值命名为res2
             res2.data.map(item => { // 遍历数据，在每个跑步记录中新增一个createTimeStr属性
-              const t = item.createTime
-              item.createTimeStr = t.getFullYear() + '-' + (t.getMonth() + 1) + '-' + t.getDate() + ' ' + t.getHours() + ':' + t.getMinutes() + ':' + t.getSeconds()
+              item.createTimeStr = util.getReadableTime(item.createTime)
             })
             // 将已有的pageData与新获得的20条数据合并成一个新的数组
             const pageData = this.data.pageData.concat(res2.data)
