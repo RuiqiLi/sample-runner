@@ -94,6 +94,7 @@ Page({
     }
   },
   startRunning() { // 开始跑步 or 继续跑步
+    // 1.转换状态，新增跑步轨迹
     let polyline = this.data.polyline
     polyline.push({ // 新增一条跑步轨迹
       points: [], // 初始不包含坐标点
@@ -104,6 +105,7 @@ Page({
       status: 'running',
       polyline
     })
+    // 2.立即获取定位并记录起点
     this.makeUserCenter(location => { // 将用户位置设为中心，并回调函数
       let markers = this.data.markers // 新增一个起点标记点
       const markerNo = Math.floor(markers.length / 2) + 1
@@ -121,7 +123,8 @@ Page({
       })
       this.recordPoint(location) // 记录用户当前坐标点至跑步轨迹中
     })
-    this.recordInterval = setInterval(() => { // 设置定时器，2秒钟记录一次定位
+    // 3.设置定时器，2秒钟记录一次定位
+    this.recordInterval = setInterval(() => {
       this.makeUserCenter(this.recordPoint)
     }, 2000)
   },
