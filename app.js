@@ -1,6 +1,6 @@
 App({
   onLaunch: function () {
-    wx.setKeepScreenOn({
+    wx.setKeepScreenOn({ // 设置屏幕常亮
       keepScreenOn: true
     })
     wx.cloud.init({ // 初始化云能力

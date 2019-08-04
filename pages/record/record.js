@@ -1,3 +1,5 @@
+const util = require('../..//utils/util.js')
+
 Page({
   data: {
     polyline: [], // 跑步轨迹
@@ -24,6 +26,10 @@ Page({
             polyline: res.data.polyline,
             markers: res.data.markers,
             includePoints
+          })
+          // 动态设置导航栏标题
+          wx.setNavigationBarTitle({
+            title: util.getReadableTime(res.data.createTime)
           })
         }
       })
