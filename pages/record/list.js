@@ -1,4 +1,4 @@
-const util = require('../..//utils/util.js')
+const util = require('../../utils/util.js')
 
 Page({
   data: {
@@ -22,7 +22,7 @@ Page({
           .skip(this.data.nextPage * PAGE_COUNT) // 跳过已经获取的数据
           .limit(PAGE_COUNT) // 获取新的20条数据
           .get().then(res2 => { // 为了防止命名冲突，返回值命名为res2
-            res2.data.map(item => { // 遍历数据，在每个跑步记录中新增一个createTimeStr属性
+            res2.data.map(item => { // 在每个跑步记录中新增一个createTimeStr属性
               item.createTimeStr = util.getReadableTime(item.createTime)
             })
             // 将已有的pageData与新获得的20条数据合并成一个新的数组
