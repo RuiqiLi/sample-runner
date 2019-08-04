@@ -53,13 +53,12 @@ Page({
         clearTimeout(this.resetTimeout)
         this.resetTimeout = null
       }
-      if (e.causedBy === 'drag' || e.causedBy === 'scale') { // 只关注用户拖动或缩放地图的情况
-        if (e.type === 'end') { // 操作结束时，定时10秒居中显示用户定位地点
-          this.resetTimeout = setTimeout(() => { // 设置定时器
-            this.resetTimeout = null
-            this.makeUserCenter()
-          }, 10000)
-        }
+      // 只关注用户拖动或缩放地图的情况，操作结束时，定时10秒居中显示用户定位地点
+      if (e.type === 'end' && (e.causedBy === 'drag' || e.causedBy === 'scale')) {
+        this.resetTimeout = setTimeout(() => { // 设置定时器
+          this.resetTimeout = null
+          this.makeUserCenter()
+        }, 10000)
       }
     }
   },

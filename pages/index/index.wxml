@@ -7,14 +7,13 @@
   </block>
   <!-- 授权成功时，显示地图 -->
   <block wx:else>
-    <map id="my-map" scale="{{17}}" show-location show-scale latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" bindregionchange="onRegionChange">
-      <!-- 跑步开始前的倒计时数字 -->
+    <map scale="{{17}}" show-location show-scale latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" bindregionchange="onRegionChange">
+      <!-- 跑步开始前的倒计时数字，在原生组件map上面显示内容需要使用cover-view -->
       <cover-view wx:if="{{status === 'starting'}}" class="counting-num">{{countingNum}}</cover-view>
       <!-- 在地图下方显示控制按钮 -->
       <cover-view class="control-btn flex flex-direction justify-between">
         <!-- 未开始跑步时，显示开始跑步和跑步记录按钮 -->
         <block wx:if="{{status === 'stop'}}">
-          <!-- 在原生组件map上面显示组件需要使用cover-view -->
           <cover-view class="cu-btn round lg bg-green shadow" bindtap="onClickRun">
             <!-- 将文字再封装一层cover-view，否则在Android手机上面无法垂直居中文字 -->
             <cover-view>开始跑步</cover-view>
