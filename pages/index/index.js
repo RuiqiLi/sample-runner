@@ -139,7 +139,7 @@ Page({
       polyline
     })
   },
-  onClickPause() { // 用户点击暂停跑步按钮时回调次函数
+  onClickPause() { // 用户点击暂停跑步按钮时回调此函数
     wx.showModal({ // 显示提示弹窗，防误触
       title: '暂停跑步',
       content: '休息一下吧',
